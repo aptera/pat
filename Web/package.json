@@ -1,0 +1,19 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "Totally Not Robots Movie Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "generate": "autorest --namespace=TotallyNotRobots.Movies.Web.ApiClient --input-file=http://localhost:56820/swagger/docs/v1 --output-folder='ApiClient\\Generated' --csharp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://aptera.visualstudio.com/DefaultCollection/Aptera/_git/pat"
+  },
+  "author": "jfazzaro",
+  "license": "ISC",
+  "devDependencies": {
+    "autorest": "^1.2.2"
+  }
+}

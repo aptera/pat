@@ -1,0 +1,41 @@
+﻿@model TotallyNotRobots.Movies.Web.Presentation.MovieListViewModel
+
+@using TotallyNotRobots.Movies.Web.ApiClient.Models
+
+<h2>Movies</h2>
+<p>
+    @using (Html.BeginForm("Index", "Movies", FormMethod.Get, new { @class = "tnr-movie-filter form-inline" }))
+    {
+    <p>
+        @Html.DropDownListFor(m => m.Genre, new SelectList(Model.Genres, Model.Genre), "(Any Genre)", new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Filter, new { @class = "form-control", placeholder = "Filter by title" })
+        <button type="submit" class="btn btn-primary form-control">Filter</button>
+    </p>
+    }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sample.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sample.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sample.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sample.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sample.Rating)
+            </th>
+
+            <th></th>
+        </tr>
+        @foreach (var movie in Model.Movies)
+        {
+            @Html.Partial("_MovieTableRow", movie)
+        }
+    </table>
+    @Html.ActionLink("Add New", "Create", null, new { @class = "btn btn-warning" })

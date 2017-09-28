@@ -1,0 +1,22 @@
+﻿@model TotallyNotRobots.Movies.Web.ApiClient.Models.Movie
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ReleaseDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Genre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Rating)
+    </td>
+    <td>
+        @Html.Partial("_EditLinks", Model.ID)
+    </td>
+</tr>
