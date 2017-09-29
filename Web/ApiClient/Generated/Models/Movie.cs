@@ -5,10 +5,13 @@
 namespace TotallyNotRobots.Movies.Web.ApiClient.Models
 {
     using Microsoft.Rest;
+    using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using TotallyNotRobots.Movies;
     using TotallyNotRobots.Movies.Web;
     using TotallyNotRobots.Movies.Web.ApiClient;
-    using Newtonsoft.Json;
-    using System.Linq;
 
     public partial class Movie
     {
@@ -23,7 +26,7 @@ namespace TotallyNotRobots.Movies.Web.ApiClient.Models
         /// <summary>
         /// Initializes a new instance of the Movie class.
         /// </summary>
-        public Movie(string genre, int? id = default(int?), string title = default(string), System.DateTime? releaseDate = default(System.DateTime?), double? price = default(double?), string rating = default(string))
+        public Movie(string genre, int? id = default(int?), string title = default(string), System.DateTime? releaseDate = default(System.DateTime?), double? price = default(double?), string rating = default(string), IList<Review> reviews = default(IList<Review>))
         {
             ID = id;
             Title = title;
@@ -31,6 +34,7 @@ namespace TotallyNotRobots.Movies.Web.ApiClient.Models
             Genre = genre;
             Price = price;
             Rating = rating;
+            Reviews = reviews;
             CustomInit();
         }
 
@@ -68,6 +72,11 @@ namespace TotallyNotRobots.Movies.Web.ApiClient.Models
         /// </summary>
         [JsonProperty(PropertyName = "Rating")]
         public string Rating { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "Reviews")]
+        public IList<Review> Reviews { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -128,6 +137,16 @@ namespace TotallyNotRobots.Movies.Web.ApiClient.Models
                 if (!System.Text.RegularExpressions.Regex.IsMatch(Rating, "^[A-Z]+[a-zA-Z''-'\\s]*$"))
                 {
                     throw new ValidationException(ValidationRules.Pattern, "Rating", "^[A-Z]+[a-zA-Z''-'\\s]*$");
+                }
+            }
+            if (Reviews != null)
+            {
+                foreach (var element in Reviews)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
                 }
             }
         }

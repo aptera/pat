@@ -1,4 +1,4 @@
-﻿@model TotallyNotRobots.Movies.Web.ApiClient.Models.Movie
+﻿@model TotallyNotRobots.Movies.Web.Models.MovieDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -11,43 +11,50 @@
 	<hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.Movie.Title)
         </dt>
          @*Markup omitted for clarity.*@
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.Movie.Title)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            @Html.DisplayNameFor(model => model.Movie.ReleaseDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReleaseDate)
+            @Html.DisplayFor(model => model.Movie.ReleaseDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Genre)
+            @Html.DisplayNameFor(model => model.Movie.Genre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Genre)
+            @Html.DisplayFor(model => model.Movie.Genre)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => model.Movie.Price)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.Movie.Price)
         </dd>
         <dd>
-            @Html.DisplayFor(model => model.Rating)
+            @Html.DisplayFor(model => model.Movie.Rating)
         </dd>
 
     </dl>
+
+    <h3>Reviews</h3>
+    @foreach(var review in Model.Reviews)
+    {
+        <p>@review.Comments</p>
+    }
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Movie.ID }, new { @class = "btn btn-warning" })
+    @Html.RouteLink("Review", "NewReview", new { movieID = Model.Movie.ID }, new { @class = "btn btn-warning" })
     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </p>

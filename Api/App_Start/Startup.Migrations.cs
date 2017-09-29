@@ -1,10 +1,11 @@
-﻿using System.Data.Entity.Migrations;
+﻿using Owin;
+using System.Data.Entity.Migrations;
 
 namespace TotallyNotRobots.Movies.Api
 {
     public partial class Startup
     {
-        public static void UpdateDatabase()
+        public void UpdateDatabase(IAppBuilder app)
         {
             var migrations = new DbMigrator(new Migrations.Configuration());
             migrations.Update();

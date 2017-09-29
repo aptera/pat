@@ -67,11 +67,16 @@
     <Compile Include="ApiClient\Generated\Api.cs" />
     <Compile Include="ApiClient\Generated\IApi.cs" />
     <Compile Include="ApiClient\Generated\IMovies.cs" />
+    <Compile Include="ApiClient\Generated\IReviews.cs" />
     <Compile Include="ApiClient\Generated\Models\Movie.cs" />
+    <Compile Include="ApiClient\Generated\Models\Review.cs" />
     <Compile Include="ApiClient\Generated\Movies.cs" />
     <Compile Include="ApiClient\Generated\MoviesExtensions.cs" />
+    <Compile Include="ApiClient\Generated\Reviews.cs" />
+    <Compile Include="ApiClient\Generated\ReviewsExtensions.cs" />
     <Compile Include="APITests.cs" />
     <Compile Include="Movies\TheMoviesAPI.cs" />
+    <Compile Include="Movies\TheReviewsAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

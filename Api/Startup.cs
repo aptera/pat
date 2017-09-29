@@ -13,7 +13,7 @@ namespace TotallyNotRobots.Movies.Api
             Dependencies(GlobalConfiguration.Configuration);
             GlobalConfiguration.Configure(WebApiConfig.Register);
             SwaggerConfig.Register(GlobalConfiguration.Configuration);
-            UpdateDatabase();
+            UpdateDatabase(app);
         }
     }
 }

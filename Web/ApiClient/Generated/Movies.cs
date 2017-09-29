@@ -6,7 +6,6 @@ namespace TotallyNotRobots.Movies.Web.ApiClient
 {
     using Microsoft.Rest;
     using Models;
-    using TotallyNotRobots.Movies.Web;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -15,6 +14,8 @@ namespace TotallyNotRobots.Movies.Web.ApiClient
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using TotallyNotRobots.Movies;
+    using TotallyNotRobots.Movies.Web;
 
     /// <summary>
     /// Movies operations.
@@ -250,7 +251,7 @@ namespace TotallyNotRobots.Movies.Web.ApiClient
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 201)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 if (_httpResponse.Content != null) {
@@ -278,6 +279,24 @@ namespace TotallyNotRobots.Movies.Web.ApiClient
             _result.Response = _httpResponse;
             // Deserialize Response
             if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Movie>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 201)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try

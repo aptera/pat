@@ -5,11 +5,12 @@
 namespace TotallyNotRobots.Movies.Web.ApiClient
 {
     using Models;
-    using TotallyNotRobots.Movies.Web;
     using System.Collections;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using TotallyNotRobots.Movies;
+    using TotallyNotRobots.Movies.Web;
 
     /// <summary>
     /// Extension methods for Movies.

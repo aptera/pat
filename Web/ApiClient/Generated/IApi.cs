@@ -5,8 +5,9 @@
 namespace TotallyNotRobots.Movies.Web.ApiClient
 {
     using Models;
-    using TotallyNotRobots.Movies.Web;
     using Newtonsoft.Json;
+    using TotallyNotRobots.Movies;
+    using TotallyNotRobots.Movies.Web;
 
     /// <summary>
     /// </summary>
@@ -32,6 +33,11 @@ namespace TotallyNotRobots.Movies.Web.ApiClient
         /// Gets the IMovies.
         /// </summary>
         IMovies Movies { get; }
+
+        /// <summary>
+        /// Gets the IReviews.
+        /// </summary>
+        IReviews Reviews { get; }
 
     }
 }

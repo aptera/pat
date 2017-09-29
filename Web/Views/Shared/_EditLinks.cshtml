@@ -1,5 +1,5 @@
 ﻿@model int
 
-@Html.ActionLink("Edit", "Edit", new { id = Model }) |
-@Html.ActionLink("Details", "Details", new { id = Model }) |
-@Html.ActionLink("Delete", "Delete", new { id = Model })
+@Html.ActionLink("Edit", "Edit", new { id = Model }, new { @class = "edit-button" }) |
+@Html.ActionLink("Details", "Details", new { id = Model }, new { @class = "details-button" }) |
+@Html.ActionLink("Delete", "Delete", new { id = Model }, new { @class = "delete-button" })

@@ -3,7 +3,7 @@
 	I want to add a movie to the database
 	So other users can interact with the movie
 
-@Global
+@Add
 Scenario: Add New Movie
 	Given I am on the home page
 	When I add a new movie

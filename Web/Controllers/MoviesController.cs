@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using TotallyNotRobots.Movies.Web.ApiClient;
 using TotallyNotRobots.Movies.Web.ApiClient.Models;
+using TotallyNotRobots.Movies.Web.Models;
 using TotallyNotRobots.Movies.Web.Presentation;
 
 namespace TotallyNotRobots.Movies.Controllers
@@ -40,7 +41,8 @@ namespace TotallyNotRobots.Movies.Controllers
             if (movie == null)
                 return HttpNotFound();
 
-            return View(movie);
+            var model = new MovieDetailsViewModel(_api, movie);
+            return View(model);
         }
 
         [Route("new")]

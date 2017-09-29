@@ -7,12 +7,13 @@ namespace TotallyNotRobots.Movies.Web.ApiClient
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Models;
-    using TotallyNotRobots.Movies.Web;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
+    using TotallyNotRobots.Movies;
+    using TotallyNotRobots.Movies.Web;
 
     public partial class Api : ServiceClient<Api>, IApi
     {
@@ -35,6 +36,11 @@ namespace TotallyNotRobots.Movies.Web.ApiClient
         /// Gets the IMovies.
         /// </summary>
         public virtual IMovies Movies { get; private set; }
+
+        /// <summary>
+        /// Gets the IReviews.
+        /// </summary>
+        public virtual IReviews Reviews { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the Api class.
@@ -116,6 +122,7 @@ namespace TotallyNotRobots.Movies.Web.ApiClient
         private void Initialize()
         {
             Movies = new Movies(this);
+            Reviews = new Reviews(this);
             BaseUri = new System.Uri("http://localhost:56820");
             SerializationSettings = new JsonSerializerSettings
             {

@@ -36,5 +36,10 @@ namespace TotallyNotRobots.Movies.Api.Integration.Tests.ApiClient
         /// </summary>
         IMovies Movies { get; }
 
+        /// <summary>
+        /// Gets the IReviews.
+        /// </summary>
+        IReviews Reviews { get; }
+
     }
 }
