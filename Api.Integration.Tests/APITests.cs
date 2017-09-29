@@ -4,7 +4,7 @@ using TotallyNotRobots.Movies.TestingTools;
 
 namespace TotallyNotRobots.Movies.Api.Integration.Tests
 {
-    [TestClass]
+    [TestClass] 
     public class APITests
     {
         protected static ApiClient.Api _api;

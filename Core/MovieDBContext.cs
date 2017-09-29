@@ -10,5 +10,6 @@ namespace TotallyNotRobots.Movies.Models
         }
 
         public virtual IDbSet<Movie> Movies { get; set; }
+        public virtual IDbSet<Review> Reviews { get; set; }
     }
 }

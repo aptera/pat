@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
 
-namespace TotallyNotRobots.Movies.Models {
-    public class Movie {
+namespace TotallyNotRobots.Movies.Models
+{
+    public class Movie
+    {
+        public Movie()
+        {
+            Reviews = new HashSet<Review>();
+        }
+
         public int ID { get; set; }
 
         [StringLength(60, MinimumLength = 3)]
@@ -26,6 +33,9 @@ namespace TotallyNotRobots.Movies.Models {
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
         [StringLength(5)]
         public string Rating { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
+
     }
 
 }

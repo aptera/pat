@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System;
 using TechTalk.SpecFlow;
 using TotallyNotRobots.Movies.TestingTools;
 
@@ -25,6 +26,7 @@ namespace Web.UI.Tests.Step_Definitions
             }
             _driver = new ChromeDriver(option);
             _driver.Manage().Window.Maximize();
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10.0);
         }
 
         [AfterScenario("Global")]

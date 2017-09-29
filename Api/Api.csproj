@@ -155,6 +155,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\SeedController.cs" />
     <Compile Include="Migrations\201309280158276_Initial.cs" />
     <Compile Include="Migrations\201309280158276_Initial.Designer.cs">
@@ -167,6 +168,10 @@
     <Compile Include="Migrations\201309302013486_DataAnnotations.cs" />
     <Compile Include="Migrations\201309302013486_DataAnnotations.Designer.cs">
       <DependentUpon>201309302013486_DataAnnotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709281627065_movie-reviews.cs" />
+    <Compile Include="Migrations\201709281627065_movie-reviews.Designer.cs">
+      <DependentUpon>201709281627065_movie-reviews.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -203,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201309302013486_DataAnnotations.resx">
       <DependentUpon>201309302013486_DataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281627065_movie-reviews.resx">
+      <DependentUpon>201709281627065_movie-reviews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

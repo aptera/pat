@@ -69,12 +69,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Add.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Reviews.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reviews.feature</DependentUpon>
+    </Compile>
     <Compile Include="Page Objects\AddPage.cs" />
     <Compile Include="Page Objects\BasePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Step Definitions\AddSteps.cs" />
     <Compile Include="Step Definitions\BaseSteps.cs" />
     <Compile Include="Page Objects\HomePage.cs" />
+    <Compile Include="Step Definitions\ReviewsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -83,6 +89,10 @@
     <None Include="Features\Add.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Add.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Reviews.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Reviews.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="parameters.runsettings">

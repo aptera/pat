@@ -40,6 +40,16 @@ namespace TotallyNotRobots.Movies.Api.Integration.Tests.ApiClient
         public virtual IMovies Movies { get; private set; }
 
         /// <summary>
+        /// Gets the IReviews.
+        /// </summary>
+        public virtual IReviews Reviews { get; private set; }
+
+        /// <summary>
+        /// Gets the ISeed.
+        /// </summary>
+        public virtual ISeed Seed { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the Api class.
         /// </summary>
         /// <param name='handlers'>
@@ -119,6 +129,8 @@ namespace TotallyNotRobots.Movies.Api.Integration.Tests.ApiClient
         private void Initialize()
         {
             Movies = new Movies(this);
+            Reviews = new Reviews(this);
+            Seed = new Seed(this);
             BaseUri = new System.Uri("http://localhost:56820");
             SerializationSettings = new JsonSerializerSettings
             {
