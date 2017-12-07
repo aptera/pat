@@ -14,8 +14,13 @@ namespace Web.UI.Tests.Step_Definitions
         [Given(@"a movie")]
         public void GivenAMovie()
         {
-            _driver = new ChromeDriver();
-            _driver.Manage().Window.Maximize();
+            ChromeOptions option = new ChromeOptions();
+            if (bool.Parse(_configuration.Get("IsHeadlessBrowser")))
+            {
+                option.AddArgument("--headless");
+            }
+            option.AddArgument("--start-maximized");
+            _driver = new ChromeDriver(option);
             _driver.Navigate().GoToUrl(_configuration.Get("UIBaseUrl"));
 
             Assert.IsTrue(_driver.FindElement(_detailsButton).Displayed);

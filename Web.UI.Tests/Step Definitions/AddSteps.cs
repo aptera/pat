@@ -21,8 +21,8 @@ namespace Web.UI.Tests.Step_Definitions
             {
                 option.AddArgument("--headless");
             }
+            option.AddArgument("--start-maximized");
             _Driver = new ChromeDriver(option);
-            _Driver.Manage().Window.Maximize();
         }
 
         [AfterScenario("Add")]
@@ -34,7 +34,7 @@ namespace Web.UI.Tests.Step_Definitions
         [Given(@"I am on the home page")]
         public void GivenIAmOnTheHomePage()
         {
-           _Driver.Navigate().GoToUrl(_configuration.Get("UIBaseUrl"));
+            _Driver.Navigate().GoToUrl(_configuration.Get("UIBaseUrl"));
         }
 
         [When(@"I add a new movie")]
