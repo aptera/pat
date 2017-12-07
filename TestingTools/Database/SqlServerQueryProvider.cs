@@ -13,6 +13,7 @@ namespace TotallyNotRobots.Movies.TestingTools
 
         public string Backup(string database)
         {
+            File.Delete(BackupFileName(database));
             return $"BACKUP DATABASE [{database}] TO DISK = '{BackupFileName(database)}'";
         }
 
