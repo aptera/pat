@@ -1,9 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TotallyNotRobots.Movies.TestingTools;
 
 namespace Web.UI.Tests
@@ -12,15 +7,25 @@ namespace Web.UI.Tests
     public class Context
     {
         static TestContext _context;
+        static Database _database;
+
         [AssemblyInitialize]
         public static void AssemblyInit(TestContext context)
         {
             _context = context;
+            _database = new Database(GetConfiguration());
+            _database.Backup();
         }
 
         public static Configuration GetConfiguration()
         {
             return new Configuration(_context);
+        }
+
+        [AssemblyCleanup]
+        public static void AfterAll()
+        {
+            _database.Restore();
         }
     }
 }
