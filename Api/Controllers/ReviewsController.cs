@@ -22,6 +22,12 @@ namespace TotallyNotRobots.Movies.Api.Controllers
             return Movie(movieID).Reviews;
         }
 
+        [Route("{reviewID:int}")]
+        public Review GetReview(int movieID, int reviewID)
+        {
+            return _context.Reviews.Find(reviewID);
+        }
+
         [Route("")]
         public Review Post(int movieID, Review review)
         {

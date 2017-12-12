@@ -67,14 +67,10 @@ namespace TotallyNotRobots.Movies.Web.Controllers
         //    return View(review);
         //}
 
-        //// GET: Reviews/Delete/5
-        //public ActionResult Delete(int? id)
+        // GET: Reviews/Delete/5
+        //public ActionResult Delete(int movieID, int reviewID)
         //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Review review = db.Reviews.Find(id);
+        //    var review = _api.Reviews.GetReview(movieID, reviewID);
         //    if (review == null)
         //    {
         //        return HttpNotFound();
@@ -85,11 +81,9 @@ namespace TotallyNotRobots.Movies.Web.Controllers
         //// POST: Reviews/Delete/5
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
+        //public ActionResult DeleteConfirmed(int movieID, int reviewID)
         //{
-        //    Review review = db.Reviews.Find(id);
-        //    db.Reviews.Remove(review);
-        //    db.SaveChanges();
+        //    _api.Reviews.Delete(movieID, reviewID);
         //    return RedirectToAction("Index");
         //}
 
