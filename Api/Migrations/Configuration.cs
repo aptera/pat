@@ -3,6 +3,7 @@ namespace TotallyNotRobots.Movies.Migrations
     using TotallyNotRobots.Movies.Models;
     using System;
     using System.Data.Entity.Migrations;
+    using System.Collections.Generic;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MovieDBContext>
     {
@@ -20,6 +21,10 @@ namespace TotallyNotRobots.Movies.Migrations
                     ReleaseDate = DateTime.Parse("1989-1-11"),
                     Genre = "Romantic Comedy",
                     Rating = "PG",
+                    Reviews = new List<Review>
+                    {
+                        new Review { Comments = "I'll have what she's having." }
+                    },
                     Price = 7.99M
                 },
 
