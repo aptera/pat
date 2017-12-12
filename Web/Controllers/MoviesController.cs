@@ -42,6 +42,7 @@ namespace TotallyNotRobots.Movies.Controllers
                 return HttpNotFound();
 
             var model = new MovieDetailsViewModel(_api, movie);
+            model.triggerWords = new System.Collections.Generic.List<string>() { "have" };
             return View(model);
         }
 

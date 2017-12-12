@@ -50,7 +50,7 @@
     <h3>Reviews</h3>
     @foreach(var review in Model.Reviews)
     {
-        <p>@review.Comments</p>
+        <p>@Model.Clean(review)</p>
     }
 </div>
 <p>
