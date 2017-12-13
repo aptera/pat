@@ -8,12 +8,12 @@
 
 <div>
     <h4>Movie</h4>
-	<hr />
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Movie.Title)
         </dt>
-         @*Markup omitted for clarity.*@
+        @*Markup omitted for clarity.*@
         <dd>
             @Html.DisplayFor(model => model.Movie.Title)
         </dd>
@@ -48,9 +48,12 @@
     </dl>
 
     <h3>Reviews</h3>
-    @foreach(var review in Model.Reviews)
+    @foreach (var review in Model.Reviews)
     {
-        <p>@review.Comments</p>
+    <p>
+        @review.Comments
+        @Html.RouteLink("Review", "Delete", new { movieID = Model.Movie.ID }, new { @class = "btn btn-warning delete-button" })
+    </p>
     }
 </div>
 <p>
