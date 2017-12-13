@@ -28,6 +28,13 @@ namespace TotallyNotRobots.Movies.Api.Controllers
             return _context.Reviews.Find(reviewID);
         }
 
+        [Route("{reviewID:int}")]
+        public void DeleteReview(int movieID, int reviewID)
+        {
+            _context.Reviews.Remove(_context.Reviews.Find(reviewID));
+            _context.SaveChanges();
+        }
+
         [Route("")]
         public Review Post(int movieID, Review review)
         {
