@@ -24,5 +24,18 @@ namespace TotallyNotRobots.Movies.Api.Integration.Tests.Movies
             Assert.AreEqual("Best. Movie. Evar.", review.Comments);
         }
 
+        [TestMethod]
+        public void WhenAReviewIsDeleted_DeletesTheReview()
+        {
+            var firstMovieID = _api.Movies.GetMovies().FirstOrDefault().ID ?? 0;
+            var reviews = _api.Reviews.Get(firstMovieID);
+            var firstReview = reviews.FirstOrDefault();
+
+            _api.Reviews.DeleteReview(firstMovieID, firstReview.ID ?? 0);
+
+            var deletedReview = _api.Reviews.GetReview(firstMovieID, firstReview.ID ?? 0);
+            Assert.IsNull(deletedReview);
+        }
+
     }
 }
