@@ -26,8 +26,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger delete-confirm-button" />
+            <a class="btn btn-default" href="javascript:history.back()">Nope, I'm good</a>
         </div>
     }
 </div>

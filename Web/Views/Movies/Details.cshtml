@@ -52,7 +52,7 @@
     {
     <p>
         @review.Comments
-        @Html.RouteLink("Review", "Delete", new { movieID = Model.Movie.ID }, new { @class = "btn btn-warning delete-button" })
+        @Html.RouteLink("Delete", "DeleteReview", new { movieID = Model.Movie.ID, reviewID = review.ID }, new { @class = "btn btn-xs btn-default text-danger delete-button" })
     </p>
     }
 </div>
