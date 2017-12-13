@@ -67,25 +67,26 @@ namespace TotallyNotRobots.Movies.Web.Controllers
         //    return View(review);
         //}
 
-        // GET: Reviews/Delete/5
-        //public ActionResult Delete(int movieID, int reviewID)
-        //{
-        //    var review = _api.Reviews.GetReview(movieID, reviewID);
-        //    if (review == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(review);
-        //}
+        //GET: Reviews/Delete/5
+        [Route("{reviewID:int}", Name = "Delete")]
+        public ActionResult Delete(int movieID, int reviewID)
+        {
+            var review = _api.Reviews.GetReview(movieID, reviewID);
+            if (review == null)
+            {
+                return HttpNotFound();
+            }
+            return View(review);
+        }
 
-        //// POST: Reviews/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int movieID, int reviewID)
-        //{
-        //    _api.Reviews.Delete(movieID, reviewID);
-        //    return RedirectToAction("Index");
-        //}
+        // POST: Reviews/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int movieID, int reviewID)
+        {
+            _api.Reviews.DeleteReview(movieID, reviewID);
+            return RedirectToAction("Index");
+        }
 
     }
 }
