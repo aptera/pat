@@ -14,6 +14,7 @@ namespace Web.UI.Tests.Step_Definitions
     class ReviewsSteps : BaseSteps
     {
         IWebDriver driver;
+
         [Given(@"a review")]
         public void GivenAReview()
         {
@@ -28,6 +29,7 @@ namespace Web.UI.Tests.Step_Definitions
         public void WhenTheUserDeletesAReview()
         {
             driver.FindElement(By.ClassName("delete-button")).Click();
+            driver.FindElement(By.ClassName("delete-confirm-button")).Click();
         }
 
         [Then(@"the app deletes the review")]

@@ -68,7 +68,7 @@ namespace TotallyNotRobots.Movies.Web.Controllers
         //}
 
         //GET: Reviews/Delete/5
-        [Route("{reviewID:int}", Name = "Delete")]
+        [Route("{reviewID:int}", Name = "DeleteReview")]
         public ActionResult Delete(int movieID, int reviewID)
         {
             var review = _api.Reviews.GetReview(movieID, reviewID);
@@ -81,11 +81,12 @@ namespace TotallyNotRobots.Movies.Web.Controllers
 
         // POST: Reviews/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Route("{reviewID:int}")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int movieID, int reviewID)
         {
             _api.Reviews.DeleteReview(movieID, reviewID);
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Movies", new { id = movieID });
         }
 
     }
