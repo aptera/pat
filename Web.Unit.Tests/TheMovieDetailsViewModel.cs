@@ -13,8 +13,9 @@ namespace TotallyNotRobots.Movies.Web.Unit.Tests
     [TestClass]
     public class TheMovieDetailsViewModel
     {
+		private static IApi api;
 
-        [TestMethod]
+		[TestMethod]
         public void HasAMovie()
         {
             Assert.AreEqual(5, GetModel(5).Movie.ID);
@@ -24,23 +25,69 @@ namespace TotallyNotRobots.Movies.Web.Unit.Tests
         public void LoadsTheReviewsFromTheAPI()
         {
             var model = GetModel(5);
-            Assert.AreEqual(2, model.Reviews.Count());
+		
+			Assert.AreEqual(2, model.Reviews.Count());
         }
 
+		[TestClass]
+		public class WhenCleaningAReview
+		{
+			[TestClass]
+			public class EmptyReview
+			{
+				[TestMethod]
+				public void EmptyString()
+				{
+					var model = GetModel(10);
+					var cleaned = model.Clean("");
+					Assert.AreEqual("", cleaned);
+				}
+			}
+
+			[TestClass]
+			public class GivenSomeTriggerWords
+			{
+				[TestClass]
+				public class GivenAReviewWithNoTriggerWords
+				{
+					[TestMethod]
+					public void ReturnsTheReviewUnharmed()
+					{
+						var model = GetModel(10);
+						model.TriggerWords = new List<string>()
+						{
+							"HorseFeathers",
+							"JiveTurkey"
+						};
+
+						var str = "This movie was meh.  Just meh.";
+						var cleaned = model.Clean(str);
+						Assert.AreEqual(str, cleaned);
+					}
+				}
+			}
+		}
+
         private static MovieDetailsViewModel GetModel(int id)
-        {
-            var api = A.Fake<IApi>();
-            A.CallTo(() => api.Reviews.GetWithHttpMessagesAsync(id,
-                A<Dictionary<string, List<string>>>.Ignored,
-                A<CancellationToken>.Ignored))
-                    .Returns(new HttpOperationResponse<IList<Review>>
-                    {
-                        Body = new List<Review> {
-                            new Review(),
-                            new Review()
-                        }
-                    });
-            return new MovieDetailsViewModel(api, new Movie { ID = id });
-        }
-    }
+		{
+			api = A.Fake<IApi>();
+			List<Review> reviews = new List<Review> {
+							new Review(),
+							new Review()
+						};
+			arrangeReviews(id, reviews);
+			return new MovieDetailsViewModel(api, new Movie { ID = id });
+		}
+
+		private static void arrangeReviews(int id, List<Review> reviews)
+		{
+			A.CallTo(() => api.Reviews.GetWithHttpMessagesAsync(id,
+							A<Dictionary<string, List<string>>>.Ignored,
+							A<CancellationToken>.Ignored))
+								.Returns(new HttpOperationResponse<IList<Review>>
+								{
+									Body = reviews
+								});
+		}
+	}
 }

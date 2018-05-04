@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TotallyNotRobots.Movies.Web.ApiClient;
 using TotallyNotRobots.Movies.Web.ApiClient.Models;
 
@@ -18,5 +19,12 @@ namespace TotallyNotRobots.Movies.Web.Models
         public Movie Movie => _movie;
 
         public IEnumerable<Review> Reviews => _api.Reviews.Get(_movie.ID ?? 0);
-    }
+
+		public List<string> TriggerWords { get; set; }
+
+		public string Clean(string comments)
+		{
+			return comments;
+		}
+	}
 }
