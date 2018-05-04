@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingTools", "TestingTool
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.UI.Tests", "Web.UI.Tests\Web.UI.Tests.csproj", "{96318889-23FB-4588-A995-FFAD20846E5A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA12469E-9F82-47C9-8666-B2CC05C40472}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		reviews.md = reviews.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
