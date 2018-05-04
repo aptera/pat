@@ -8,3 +8,4 @@ Scenario: Add New Movie
 	Given I am on the home page
 	When I add a new movie
 	Then I am taken to the add movie screen
+
