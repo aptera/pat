@@ -50,5 +50,24 @@ namespace Web.UI.Tests.Step_Definitions
             Assert.IsTrue(_Driver.FindElement(titleField).Displayed);
         }
 
-    }
+		[Given(@"I am on the movie details page")]
+		public void GivenIAmOnTheMovieDetailsPage()
+		{
+			_Driver.Navigate().GoToUrl("http://localhost:1235/movies/details/1");
+		}
+
+		[When(@"I click the delete button")]
+		public void WhenIClickTheDeleteButton()
+		{
+			_Driver.FindElement(By.ClassName("delete-button")).Click();
+		}
+
+		[Then(@"Redirect me to a confirmation page")]
+		public void ThenRedirectMeToAConfirmationPage()
+		{
+			Assert.IsTrue(_Driver.FindElement(By.ClassName("delete-confirm-button")).Displayed);
+		}
+
+
+	}
 }
