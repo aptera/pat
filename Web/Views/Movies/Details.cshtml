@@ -51,7 +51,7 @@
     @foreach (var review in Model.Reviews)
     {
     <p>
-        @review.Comments
+        @Model.Clean(review.Comments)
         @Html.RouteLink("Delete", "DeleteReview", new { movieID = Model.Movie.ID, reviewID = review.ID }, new { @class = "btn btn-xs btn-default text-danger delete-button" })
     </p>
     }
